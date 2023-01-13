@@ -1,0 +1,7 @@
+{
+  "name": "day02-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module"
+}
