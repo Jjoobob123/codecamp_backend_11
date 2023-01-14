@@ -20,4 +20,4 @@ const age = 12
 const school = "공룡초등학교"
 const createdAt = "2023-01-01-10"
 
-getWelcomeTemplate({name, age , school, createdAt}) //인자(argument)
+getWelcomeTemplate({name, age, school, createdAt}) //인자(argument)
