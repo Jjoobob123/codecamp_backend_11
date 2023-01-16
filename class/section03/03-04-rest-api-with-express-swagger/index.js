@@ -35,7 +35,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJsdoc(options)));
 app.get('/boards', function (req, res) {
   // 1.DB에 접속후, 데이터를 조회 => 데이터베이스 조회했다고 가정.
   const result = [
-    { number: 1, writer: "cho", title: "제목입니다", contents: "내용이에요!" },
+    { number: 1, writer: "cho", title: "제목입니다", contents: "내용이에요!오늘도 공부중" },
     { number: 2, writer: "jo", title: "바보입니다", contents: "바보에요!" },
     { number: 3, writer: "hyun", title: "주현입니다", contents: "주현이에요!" }
   ]

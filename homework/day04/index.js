@@ -71,5 +71,14 @@ app.get('/starbucks', function (req, res){
 
 })
 
+app.get('/profiles', function (req, res){
+    const result = [
+        {name: 'jo',age: 20},
+        {name: 'joo',age: 22},
+        {name: 'hyun',age: 23}
+    ]
+    res.send(result)
+
+})
 
 app.listen(3000);

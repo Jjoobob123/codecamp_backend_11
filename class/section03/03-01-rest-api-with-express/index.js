@@ -12,4 +12,4 @@ app.get('/qqq', function (req, res) {
 })
 
 // 3000 => 포트번호 listen = 기다린다(포스트맨에서 샌드버튼 누르는것을 기다린다) 
-app.listen(2000)
+app.listen(3000)

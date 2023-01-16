@@ -28,7 +28,7 @@
  *                     example: 좋은아침 입니다~
  *                   contents:
  *                     type: string
- *                     example: 오늘 하루도 파이팅 하세요!
+ *                     example: 오늘도 공부중
  */
 
 
