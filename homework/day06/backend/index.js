@@ -4,6 +4,9 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import { options } from './swagger/config.js';
 import cors from 'cors';
+import 'dotenv/config'
+import {checkPhone,getToken,sendTokenToSMS} from './phone.js'
+import {checkEmail,getWelcomeTemplate,sendTemplateToEmail} from './email.js'
 
 const app = express()
 app.use(cors());
@@ -74,34 +77,36 @@ app.get('/starbucks', function (req, res){
 
 })
 
-app.post("/tokens/phone", function(req, res){
-  
-    // post body 만들기 (내가한거)
-    // req.body.qqq
-    // console.log(req.body);
-     //1.구조분해 할당
-    // const {myphone} = req.body;
-     //2.다른 방법
-    // const myphone = req.body[myphone]; 
-  
-    // post body 만들기 (멘토님이 한거)
-    const myphone = req.body.qqq
-  
-    
-    // 1. 휴대폰 번호 자릿수 맞는지 확인하기 (10~11자리)
-    const isValid = checkPhone(myphone)
-    if(isValid ===  false){
-        return
-    }
-  
-   // 2. 휴대폰 인증번호 6자리 생성
-    const mytoken = getToken()
-  
-   // 3. 번호에 인증번호(토큰) 전송하기
-    sendTokenToSMS(myphone, mytoken)
-  
-    res.send("인증완료")
-  })
+app.post('/tokens/phone', function (req, res) {
+    const { myphone } = req.body;
+    console.log(myphone);
+    // 1. 휴대폰번호 자릿수 확인(10~11자리)
+    const isValid = checkPhone(myphone);
+    if (isValid === false) return;
 
+    // 2. 핸드폰 토큰 6자리 만들기
+    const myToken = getToken();
+
+    // 3. 핸드폰 번호에 토큰 전송하기
+    sendTokenToSMS(myphone, myToken);
+
+    res.send('인증완료');
+});
+
+app.post('/users', function (req, res) {
+    const { name, personal, prefer, email, myphone } = req.body;
+
+    // 1. 이메일이 정상인지 확인(1-존재여부, 2-"@" 포함여부)
+    const isValid = checkEmail(email);
+    if (isValid === false) return;
+
+    // 2. 가입환영 템플릿 만들기
+    const myTemplate = getWelcomeTemplate({name, prefer, myphone} );
+
+    // 3. 이메일에 가입환영 템플릿 전송하기
+    sendTemplateToEmail( myTemplate, email );
+
+    res.send('가입완료!');
+});
 
 app.listen(3000);
