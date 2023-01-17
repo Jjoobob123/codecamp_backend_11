@@ -40,7 +40,7 @@ export function getWelcomeTemplate({name,prefer,myphone}){
 
 export async function sendTemplateToEmail(result, myemail){
 
-    console.log(myemail, result);
+    // console.log(myemail, result);
     const transporter = nodemailer.createTransport({
         service:"gmail",
         auth:{
