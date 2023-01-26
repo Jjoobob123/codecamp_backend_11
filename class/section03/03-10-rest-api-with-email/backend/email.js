@@ -19,7 +19,7 @@ export function checkEmail(email){
 
 }
 
-export function getWelcomeTemplate({name, age, school , email, createdAt}){
+export function getWelcomeTemplate({name, age, school , email}){
     const mytemplate = `
         <html>
             <body>
@@ -49,13 +49,13 @@ export async function sendTemplateToEmail(myemail, result){
     const transporter = nodemailer.createTransport({
         service:"gmail",
         auth:{
-            user:"273hur4747@gmail.com",
-            pass:"hawwlrziaeopixtp"
+            user: EMAIL_USER,
+            pass: EMAIL_PASS
         }
     })
     
     const res = await transporter.sendMail({
-        from:"273hur4747@gmail.com",
+        from: EMAIL_SENDER,
         to: myemail,
         subject: "[코드캠프]가입을 축하합니다!!!",
         html: result

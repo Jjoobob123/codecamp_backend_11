@@ -1,3 +1,5 @@
+import { getToday } from "./utils.js";
+
 export function checkEmail(email){
     // if(email.includes("@") === false){
     //     console.log("에러 발생 !! ${email}를 제대로 입력해주세요  !!!"); // early-exit 
@@ -14,7 +16,7 @@ export function checkEmail(email){
 
 }
 
-export function getWelcomeTemplate({name, age, school , email, createdAt}){
+export function getWelcomeTemplate({name, age, email, school}){
     const mytemplate = `
         <html>
             <body>
@@ -24,7 +26,7 @@ export function getWelcomeTemplate({name, age, school , email, createdAt}){
                 <div>나이: ${age}</div>
                 <div>이메일: ${email}</div>
                 <div>학교: ${school}</div>
-                <div>가입일: ${createdAt}</div>
+                <div>가입일: ${getToday()}</div>
             </body>
         </html>
     `
@@ -32,7 +34,7 @@ export function getWelcomeTemplate({name, age, school , email, createdAt}){
     return mytemplate
 }
 
-function sendTemplateToEmail(myemail, result){
+export function sendTemplateToEmail(myemail, result){
     console.log(myemail + "이메일로 가입환영템플릿 " + result + "를 전송합니다.");
 
 }

@@ -97,7 +97,7 @@ app.post("/tokens/phone", function(req, res){
   res.send("인증완료")
 })
 
-app.post("/users", function (req,res){
+app.post("/users", (req,res) => {
   // const name = req.body.name
   // const age = req.body.age
   // const school = req.body.school

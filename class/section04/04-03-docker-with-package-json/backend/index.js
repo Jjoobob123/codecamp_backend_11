@@ -21,8 +21,8 @@ import {checkEmail, getWelcomeTemplate, sendTemplateToEmail } from './email.js';
 // ttt.checkPhone
 // ttt.getToken
 // ttt.sendTokenToSMS
-
-import 'dotenv/config.js'
+import * as dotenv from 'dotenv'
+dotenv.config()
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import { options } from './swagger/config.js';
