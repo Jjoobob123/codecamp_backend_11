@@ -1,19 +1,13 @@
 /**
  * @swagger
- * /tokens/phone:
+ * /tokens/Phone:
  *   post:
  *     summary: 휴대폰 번호 입력하기
  *     tags: [tokenPhone]
- *     requestBody:
- *       description: 위 내용을 입력해주세요!!!
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               phone:
- *                 type: string
- *                 example: "01072777121"
+ *     parameters:
+ *       - in: query
+ *         name: PhoneNumber
+ *         type: int
  *     responses:
  *       200:
  *         description: 성공
@@ -30,23 +24,10 @@
 
 /**
  * @swagger
- * /tokens/phone:
+ * /tokens/Phone:
  *   patch:
  *     summary: 인증번호 전송(성공😀  실패😭)
  *     tags: [tokenPhone]
- *     requestBody:
- *       description: 위 내용을 입력해주세요!!!
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               phone:
- *                 type: string
- *                 example: "01072777121"  
- *               token:
- *                 type: string
- *                 example: "209098"
  *     responses:
  *       200:
  *         description: 성공!!!😀

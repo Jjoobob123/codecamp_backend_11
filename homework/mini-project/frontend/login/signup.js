@@ -17,7 +17,21 @@ const getValidationNumber = async () => {
 }
 // 핸드폰 인증 완료 API를 요청해주세요.
 const submitToken = async () => {
-  console.log("핸드폰 인증 완료");
+  const phone1 = document.getElementById('PhoneNumber01').value;    
+  const phone2 = document.getElementById('PhoneNumber02').value;
+  const phone3 = document.getElementById('PhoneNumber03').value;
+
+  const phone = phone1 + phone2 + phone3;
+  const token = document.getElementById('TokenInput').value;
+  
+  axios.patch('http://localhost:4000/tokens/phone',{
+    token,phone
+  }).then((res) => {
+    console.log(res.data);
+  }).catch((res) => {
+    console.log(res.data);
+    
+  })
 };
 
 // 회원 가입 API를 요청해주세요.
@@ -50,8 +64,6 @@ const submitSignup = async () => {
     password
   }).then((res) => {
     console.log(res.data);
-  }).catch((res)=>{
-    console.log(res);
   })
 
   

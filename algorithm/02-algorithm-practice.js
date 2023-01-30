@@ -494,17 +494,19 @@
 
 // 1번 반복문
 // function solution(numbers) {
-//     var answer = [];
+//     const answer = [];
     
-//     for(let i = 0; i < numbers.length; i++){
-//         for (let j = i + 1; j < numbers.length; i++){
-//             const sum = numbers[i] + numbers[j];
-//             if(!answer.includes(sum)){
-//                answer.push( sum ) 
+//     for( let i = 0; i < numbers.length; i++ ) {
+//         for( let l = i + 1; l < numbers.length; l++ ) {
+//             const sum = numbers[i] + numbers[l];
+            
+//             if( answer.includes(sum) === false ) {
+//                 answer.push(sum);
 //             }
 //         }
 //     }
-//     return answer.sort((a,b) => a - b);
+
+//     return answer.sort( (a, b) => a - b );
 // }
 // 메서드 Set
 // Set 
