@@ -1,7 +1,7 @@
 // function grade(score) {
 //     if(score > 100 || score < 0 ){
 //         return "잘못된 입력입니다.";
-//     } 
+//     }
 //     let answer = "";
 //     if (90 <= score )
 //         answer = "A"
@@ -11,15 +11,12 @@
 //         answer = "C"
 //      else if(60 <= score)
 //         answer = "D"
-//      else 
+//      else
 //         answer = "F"
-    
+
 //     return answer;
 //    //  console.log(answer);
 // }
-
-
-
 
 // grade(105)  // "잘못된 점수입니다"
 // grade(-10)  // "잘못된 점수입니다"
@@ -29,7 +26,7 @@
 // grade(66)   // "D"
 // grade(52)   // "F"
 
-// 6일차 
+// 6일차
 
 // 001.
 // 1번 풀이
@@ -44,7 +41,7 @@
 //    console.log(answer);
 //     // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
 //     console.log('Hello Javascript')
-    
+
 //     return answer;
 // }
 // //  2번 풀이
@@ -58,8 +55,7 @@
 //     }
 
 //     // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    
-    
+
 //     return answer;
 // }
 
@@ -83,7 +79,7 @@
 // 003.
 // 1번 풀이
 // function solution(arr) {
-    
+
 //    return arr.reduce((a, b) => a + b) / arr.length;
 // }
 
@@ -98,18 +94,16 @@
 
 // 3번풀이
 // function solution(arr) {
-    
+
 //    let sum = 0;
 //    for(let i = 0; i<arr.length; i++){
-       
+
 //        sum += arr[i]
 //    }
 //    console.log(sum)
 //    return sum / arr.length
-   
+
 // }
-
-
 
 // 004.
 // 1번 풀이
@@ -127,9 +121,9 @@
 //         if(i < phone_number.length -4){
 //             answer += "*"
 //         }else{
-//             answer += phone_number[i] 
+//             answer += phone_number[i]
 //         }
-        
+
 //     }
 //     return answer
 // }
@@ -138,9 +132,9 @@
 // function solution(phone_number) {
 //       let answer = '';
 //     answer = answer.padStart(phone_number.length -4,"*")
-    
+
 //     answer +=  phone_number.slice(phone_number.length -4 )
-    
+
 //     console.log(answer)
 //     return answer
 // }
@@ -149,7 +143,7 @@
 // 001.
 // function solution(s) {
 //    var answer = '';
-    
+
 //     if (s.length % 2 === 0 ) { // 짝수일 경우,
 //         answer = s[s.length / 2 - 1] + s[s.length / 2];
 //     } else {
@@ -168,7 +162,7 @@
 
 // function solution(seoul) {
 //     let x = 0; // 김서방의 위치 (인덱스) 값을 저장
-   
+
 //     for( let i = 0; i < seoul.length; i++ ) {
 //         if( seoul[i] === "Kim" ) {
 //             x = i;
@@ -178,7 +172,6 @@
 
 //    return `김서방은 ${x}에 있다`
 // }
-
 
 // 003
 // 문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수, solution을 완성하세요. 예를 들어 s가 "a234"이면 False를 리턴하고 "1234"라면 True를 리턴하면 됩니다.
@@ -191,7 +184,7 @@
 //     if( s.length !== 4 && s.length !== 6 ) {
 //         return false
 //     }
-    
+
 //     for( let i = 0; i < s.length; i++ ) {
 //         if( Number.isNaN( Number(s[i]) ) ) {
 //             return false;
@@ -212,7 +205,7 @@
 // function solution(n){
 //     let answer = 0;
 //     n = String(n)
-    
+
 // 1번 풀이
 //     for(let i =0; i < n.length; i++){
 //         // answer = answer + n[i]
@@ -225,21 +218,17 @@
 // function solution(n){
 //     const answer = String(n).split("").reduce((acc,cur) => {
 //         return acc + Number(cur) },0)
-    
+
 //         return answer
 // }
 // 뒤에 0을 추가하면 문자열이 숫자열로 반환할수 있다.
 
-
-
-
 // console.log(123); //6
 // console.log(987); //24
 
-
 // 002.
 // 문제 설명
-// 함수 solution은 정수 x와 자연수 n을 입력 받아, 
+// 함수 solution은 정수 x와 자연수 n을 입력 받아,
 // x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다.
 // 다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.
 
@@ -260,11 +249,9 @@
 //     return answer
 //     console.log(answer)
 
-    
 // }
 
 // console.log(2,5); //[2,4,6,8,10]
-
 
 // 003.
 // 문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요.
@@ -278,13 +265,13 @@
 // 2번 풀이
 // function solution(s) {
 //     const answer = [];
-    
+
 //     for(let i = 0; i < s.length; i++){
 //         answer.push(s[i])
 //     }
-    
+
 //     answer.sort((a,b)=> {return a > b ? -1 : 1})
-    
+
 //     return answer.join("")
 // }
 
@@ -303,44 +290,41 @@
 // array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다.
 // 1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다.
 // 2에서 나온 배열의 3번째 숫자는 5입니다.
-// 배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, 
+// 배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때,
 // commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.
 
 // 1번 풀이
 // function solution(array, commands) {
 //     const answer = [];
-    
+
 //     for(let idx = 0;idx < commands.length; idx++){
-       
+
 //         const i = commands[idx][0];
 //         const j = commands[idx][1];
 //         const k = commands[idx][2];
 //         const result = array.slice(i-1,j).sort((a,b) => {return a - b})
-        
+
 //         answer.push(result[k-1])
-        
+
 //     }
 //     console.log(answer)
 //     return answer
 // }
 
-// 2번 풀이 
+// 2번 풀이
 // function solution(array, commands) {
 //     const answer = commands.map((el) => {
 //         const result = array.slice(el[0]-1,el[1]).sort((a, b) =>{
 //             return a - b
 //         })
 //         return result[el[2]-1]
-        
-        
+
 //     })
 //     return answer
 // }
 
-
 // array	                            commands	             return
 // [1, 5, 2, 6, 3, 7, 4]	[[2, 5, 3], [4, 4, 1], [1, 7, 3]]	[5, 6, 3]
-
 
 // 11일차
 
@@ -350,28 +334,28 @@
 // 제한 사항
 // n은 1이상, 50000000000000 이하인 양의 정수입니다.
 
+// 1. 반복문
 // function solution(n) {
-// 1. 반복문 
-//     // 제곱근
-//     // 제곱의 기준이 되는 숫자
-//     // 2 * 2 === 4, 2 는 4의 제곱근
-//     let answer = -1;
-    
-//     // i * i === n, i 는 n의 제곱근
-//     for(let i = 1; i * i <= n; i++){
-//         // 11 * 11 === 121 , 11은 121의 제곱근
-//         // console.log(i, i*i)
-//         if(i*i === n ){
-//             // console.log(i,n)
-//             // answer = i + 1;
-//             // return answer * answer 
-//             // return (i+1) * (i+1)
-//             // 거듭제곱 연산자 활용도 가능
-//             return (i + 1)**2
-//         }
+//   // 제곱근
+//   // 제곱의 기준이 되는 숫자
+//   // 2 * 2 === 4, 2 는 4의 제곱근
+//   let answer = -1;
+
+//   // i * i === n, i 는 n의 제곱근
+//   for (let i = 1; i * i <= n; i++) {
+//     // 11 * 11 === 121 , 11은 121의 제곱근
+//     // console.log(i, i*i)
+//     if (i * i === n) {
+//       // console.log(i,n)
+//       answer = i + 1;
+//       // return answer * answer
+//       // return (i+1) * (i+1)
+//       // 거듭제곱 연산자 활용도 가능
+//       return (i + 1) ** 2;
 //     }
-//     // 제곱근을 찾지 못한 경우
-//     return answer
+//   }
+//   // 제곱근을 찾지 못한 경우
+//   return answer;
 // }
 
 // 2. 메서드 활용
@@ -390,7 +374,6 @@
 //     }
 // }
 
-
 // 002.제일 작은수 제거하기
 // 정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을 리턴하는 함수, solution을 완성해주세요. 단, 리턴하려는 배열이 빈 배열인 경우엔 배열에 -1을 채워 리턴하세요. 예를들어 arr이 [4,3,2,1]인 경우는 [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
 
@@ -400,7 +383,7 @@
 // 1. 반복문
 // function solution(arr) {
 //     const answer = [];
-    
+
 //     // 1. 제일 작은 수 찾기
 //     let min = arr[0];
 //     for(let i = 1; i< arr.length; i++){
@@ -408,7 +391,7 @@
 //             min = arr[i]
 //         }
 //     }
-    
+
 //     // 2.제일 작은 수를 제외한 숫자만 배열에 추가
 //     for( let i =0; i < arr.length; i++){
 //         if(arr[i] !== min){
@@ -418,7 +401,7 @@
 //     // 3.빈 배열인지 체크하기
 //     // 빈애열이라면 , -1이 담긴 배열을 리턴
 //     // 아니라면, 2번 과정에서 받아온 배열을 리턴
-//     return answer.length === 0? [-1] : answer 
+//     return answer.length === 0? [-1] : answer
 //     console.log(answer)
 // }
 
@@ -429,27 +412,28 @@
 // function solution(arr) {
 //     //1. 제일 작은 수 찾기
 //     const min = Math.min(...arr)
-    
+
 //     // 2.제일 작은 숫자만 배열에 추가
 //     const answer = arr.filter((num) =>{
 //         return num !== min
 //     })
 //     // 3
-    
-//     return answer.length === 0 
-//         ? [-1]  //빈 배열일 경우
-//         : answer //빈 배열이 아닌 경우 
-// }
 
+//     return answer.length === 0
+//         ? [-1]  //빈 배열일 경우
+//         : answer //빈 배열이 아닌 경우
+// }
 
 // 12일차
 // 001.
 // 1937년 Collatz란 사람에 의해 제기된 이 추측은, 주어진 수가 1이 될 때까지 다음 작업을 반복하면, 모든 수를 1로 만들 수 있다는 추측입니다. 작업은 다음과 같습니다.
 
-// 1-1. 입력된 수가 짝수라면 2로 나눕니다. 
-// 1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다. 
-// 2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다. 
-// 예를 들어, 주어진 수가 6이라면 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1 이 되어 총 8번 만에 1이 됩니다. 위 작업을 몇 번이나 반복해야 하는지 반환하는 함수, solution을 완성해 주세요. 단, 주어진 수가 1인 경우에는 0을, 작업을 500번 반복할 때까지 1이 되지 않는다면 –1을 반환해 주세요.
+// 1-1. 입력된 수가 짝수라면 2로 나눕니다.
+// 1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다.
+// 2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다.
+// 예를 들어, 주어진 수가 6이라면 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1 이 되어 총 8번 만에 1이 됩니다.
+// 위 작업을 몇 번이나 반복해야 하는지 반환하는 함수, solution을 완성해 주세요.
+// 단, 주어진 수가 1인 경우에는 0을, 작업을 500번 반복할 때까지 1이 되지 않는다면 –1을 반환해 주세요.
 // 1.반복문
 // function solution(num) {
 //     let answer = 0;
@@ -467,7 +451,7 @@
 //             num = (num * 3) + 1
 //         }
 //     }
-    
+
 //     return num !== 1 ? -1 : answer
 // }
 
@@ -475,7 +459,7 @@
 // forEach는 break 사용 불가
 // function solution(num) {
 //     let answer = 0;
-    
+
 //     const result = new Array(500).fill(1).forEach((el)=>{
 //         if(num !== 1){
 //         answer++
@@ -495,11 +479,11 @@
 // 1번 반복문
 // function solution(numbers) {
 //     const answer = [];
-    
+
 //     for( let i = 0; i < numbers.length; i++ ) {
 //         for( let l = i + 1; l < numbers.length; l++ ) {
 //             const sum = numbers[i] + numbers[l];
-            
+
 //             if( answer.includes(sum) === false ) {
 //                 answer.push(sum);
 //             }
@@ -509,7 +493,7 @@
 //     return answer.sort( (a, b) => a - b );
 // }
 // 메서드 Set
-// Set 
+// Set
 // const newSet = new Set([1,2,3,4])
 
 // forEach 응용
@@ -527,7 +511,7 @@
 // 2.고유한 값만 저장( 중복 데이터 x)
 // newSet
 
-// 데이터 추가 
+// 데이터 추가
 // newSet.add(5)
 
 // 데이터 삭제
@@ -536,10 +520,10 @@
 // 데이터 조회
 // newSet.has(2)  //boolean 값으로 반환해준다.
 
-// 데이터 길이값 조회 
+// 데이터 길이값 조회
 // newSet.size   //4
 
-// 데이터 리셋 
+// 데이터 리셋
 // newSet.clear() //다 사라짐
 
 // 배열로 바꿔주는 법
@@ -551,13 +535,13 @@
 // 002.set 객체
 // function solution(numbers) {
 //     let answer = new Set([]);
-    
+
 //     for(let i = 0; i < numbers.length; i++){
 //         for (let j = i + 1; j < numbers.length; i++){
 //             const sum = numbers[i] + numbers[j];
 //             answer.add(sum)
 //             // if(!answer.includes(sum)){
-//             //    answer.push( sum ) 
+//             //    answer.push( sum )
 //             }
 //         }
 //         return Array.from( answer ).sort((a,b)=> a-b)
@@ -566,13 +550,12 @@
 // 03.메서드 활용
 // function solution(numbers) {
 //     const answer = new Set([]);
-    
+
 //     numbers.forEach((num1,i) =>{
 //         numbers.slice(i + 1).forEach((num2)=>{
 //             const sum = num1 + num2;
 //             answer.add(sum)
-//         }) 
+//         })
 //     })
 //     return Array.from( answer ).sort((a,b)=> a-b)
 // }
-    
