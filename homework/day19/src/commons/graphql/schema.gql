@@ -1,0 +1,105 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ProductRoomImage {
+  room_image_id: String!
+  name: String!
+  room_image_url: String!
+  is_main: Boolean!
+  productsRoomType: [ProductRoomType!]!
+}
+
+type ProductRoomType {
+  id: String!
+  name: String!
+  price: Int!
+  headcount: Int!
+  products: [Product!]!
+  productsRoomImage: [ProductRoomImage!]!
+}
+
+type Coupon {
+  coupon_id: String!
+  name: String!
+  users: [User!]!
+}
+
+type User {
+  user_id: String!
+  name: String!
+  password: String!
+  create_date: DateTime!
+  phone_number: String!
+  payment: [Payment!]!
+  coupons: [Coupon!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Payment {
+  order_id: String!
+  stay_date: DateTime!
+  payment_amount: Int!
+  payment_method: String!
+  is_canceled: Boolean!
+  refund_amount: Int!
+  users: [User!]!
+  products: [Product!]!
+  productsRoomType: [ProductRoomType!]!
+}
+
+type ProductCategory {
+  id: String!
+  name: String!
+  products: [Product!]!
+}
+
+type MainLocation {
+  id: String!
+  name: String!
+  subLocation: [SubLocation!]!
+}
+
+type SubLocation {
+  id: String!
+  name: String!
+  products: [Product!]!
+  mainLocation: [MainLocation!]!
+}
+
+type Product {
+  id: String!
+  name: String!
+  review: String!
+  star: Float!
+  productCategory: [ProductCategory!]!
+  subLocation: [SubLocation!]!
+  productsRoomType: [ProductRoomType!]!
+  payment: [Payment!]!
+}
+
+type Query {
+  fetchProducts: [Product!]!
+  fetchProduct(productId: String!): Product!
+}
+
+type Mutation {
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
+}
+
+input CreateProductInput {
+  name: String!
+  review: String!
+  star: Float!
+}
+
+input UpdateProductInput {
+  name: String
+  review: String
+  star: Float
+}

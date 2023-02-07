@@ -297,10 +297,10 @@
 // }
 
 // 02.
-return s
-  .split(" ")
-  .map((v) => v.charAt(0).toUpperCase() + v.substring(1).toLowerCase())
-  .join(" ");
+// return s
+//   .split(" ")
+//   .map((v) => v.charAt(0).toUpperCase() + v.substring(1).toLowerCase())
+//   .join(" ");
 
 // 03.
 // function solution(s) {
@@ -314,3 +314,238 @@ return s
 
 //     return s.join(" ")
 // }
+
+// 16일차
+// 01. 2016년
+// 2016년 1월 1일은 금요일입니다. 2016년 a월 b일은 무슨 요일일까요?
+// 두 수 a ,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수,
+// solution을 완성하세요.
+// 요일의 이름은 일요일부터 토요일까지 각각 SUN,MON,TUE,WED,THU,FRI,SAT입니다.
+// 예를 들어 a=5, b=24라면 5월 24일은 화요일이므로 문자열 "TUE"를 반환하세요.
+
+// 001
+// // 1.메서드
+// const month = {
+//   1 : 31,
+//   2 : 29,
+//   3 : 31,
+//   4 : 30,
+//   5 : 31,
+//   6 : 30,
+//   7 : 31,
+//   8 : 31,
+//   9 : 30,
+//   10 : 31,
+//   11 : 30,
+//   12 : 31
+// }
+
+// const weekDay = ["FRI","SAT","SUN","MON","TUE","WED","THU"]
+
+// function solution(a, b) {
+//   const days = new Array(a)
+//                   .fill(1)
+//                   .reduce((acc,cur,i)=>{
+//                       const monthNum = cur +i
+//                       console.log(monthNum)
+//                       return acc + ((monthNum !== a
+//                                     //이전 월인 경우
+//                                      ? month[monthNum]
+//                                      //해당 월일 경우 ( a와 같은 경우)
+//                                      : b - 1
+//                                     )
+
+//                               )
+//                   },0)
+//   return weekDay[days%7]
+
+// }
+
+// 2.
+// function solution(a,b){
+//   var arr = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+//   var date = new Date(`2016-${a}-${b}`);
+// var day = date.getDay()
+//   return arr[day];
+// }
+
+// 17일차
+
+// 최대공약수와 최소공배수
+// 문제 설명
+// 두 수를 입력받아 두 수의 최대공약수와 최소공배수를 반환하는 함수,
+// solution을 완성해 보세요. 배열의 맨 앞에 최대공약수,
+// 그다음 최소공배수를 넣어 반환하면 됩니다. 예를 들어 두 수 3, 12의 최대공약수는 3,
+// 최소공배수는 12이므로 solution(3, 12)는 [3, 12]를 반환해야 합니다.
+
+// .001
+// function solution(n, m) {
+
+//     let max = 0; // 공약수 중에서 가장 큰 값
+//     //최대공약수 구하기
+//     for(let i = 1; i <= m; i++){
+//         // console.log( i , n%i,m%i)
+//         if(n % i === 0 && m % i === 0){
+//             max =i
+//         }
+//     }
+//     //최소공배수 구하기
+//     let min = 0;
+//     for(let i = m ;i <= n*m; i += m){
+//         if( i%n === 0){
+//             min = i;
+//             break;
+//         }
+//     }
+//     console.log(min, max)
+//     return [ max, min]
+// }
+
+0.002;
+// function solution(n, m) {
+// 유클리드 호제법
+//     //- 최대공약수를 구하기 위한 알고리즘(공식)
+
+//     //1. a를 b로 나눴을때 ( a > b , 큰 수를 더 작은 수로 나누었을 때)
+//     //2. 나머지값을 c
+//     //3. c가 0이라면, b가 최대 공약수
+//     //4. c가 0이 아니라면, b를 c로 나눠준다.(1번과정)
+
+//     let a = Math.max(n,m) //큰 수
+//     let b = Math.min(n,m) //작은 수
+//     let c = 0; //a를 b로 나누었을 때의 나머지 값
+
+//     while( a % b  > 0){
+//         c = a % b // 큰 수를 작은 수로 나눴을 때의 나머지 값
+//         a = b ; // 큰 수의 위치에 작은 수를 다시 할당
+//         b = c; // 작은 수의 위치에 나머지 값으 다시 할당
+
+//     }
+
+//     return [b, (n * m)/b]
+// }
+
+// 18일차
+// 문제 설명
+// 수많은 마라톤 선수들이 마라톤에 참여하였습니다.
+// 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.
+// 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와
+// 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때,
+// 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
+
+//splice
+// 배열에서 사용가능한 메서드
+
+// 1. 지정한 배열의 특정 구간 요소를 제거할 수 있다.
+// 2. 지정한 배열의 특정 구간에 요소를 추가할 수 있다.
+
+0.001;
+// function solution(participant, completion) {
+//     for(let i = 0 ; i < participant.length; i++){
+//         if( participant.includes(completion[i])){
+//            participant.splice(participant.indexOf(completion[i]),1)
+//          }
+//     }
+//     return participant[0]
+//     console.log(participant)
+// }
+
+0.002; //헤싱(hash)
+// function solution(participant, completion) {
+//     const answer = {};
+
+//     for(let i = 0; i <participant.length; i++){
+//         answer [participant[i]] === undefined
+//             ? answer[ participant[i] ] = 1
+//             : answer[ participant[i] ]++
+//     }
+
+//     for(let i = 0; i < completion.length; i++){
+//         answer[ completion[i] ]--;
+//     }
+//     // 객체 요소들을 순환 할때
+//     for(let key in answer){
+//         // console.log(key,answer)
+//         if(answer[key] ){
+//             return key
+//         }
+//     }
+// }
+
+0.003;
+// function solution(participant, completion) {
+//     participant.sort() //참가자 명단을 오름차순으로 정령
+
+//     completion.sort() //완주자 명단을 오름차순으로 정렬
+
+//     let answer = ''
+//     for(let i = 0; i< participant.length; i++){
+//         if(participant[i] !== completion[i]){
+//             answer = participant[i]
+//             break;
+
+//         }
+//     }
+//     console.log(answer)
+//     return answer
+// }
+
+0.004;
+// function solution(participant, completion) {
+//     participant.sort() //참가자 명단을 오름차순으로 정령
+
+//     completion.sort() //완주자 명단을 오름차순으로 정렬
+
+//     const answer = participant.filter((name,i) => {
+//         return name !== completion[i]
+//     })
+//     return answer[0]
+// }
+
+// 20일차
+
+0.1;
+// 문제 설명
+// 수포자는 수학을 포기한 사람의 준말입니다.
+// 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다.
+// 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다.
+
+// 1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...
+// 2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, ...
+// 3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, ...
+
+// 1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때,
+// 가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.
+
+0.001;
+const answerTable = [
+  [1, 2, 3, 4, 5], // 5개 패턴
+  [2, 1, 2, 3, 2, 4, 2, 5], // 8개 패턴
+  [3, 3, 1, 1, 2, 2, 4, 4, 5, 5], // 10개 패턴
+];
+
+function solution(answers) {
+  const score = [0, 0, 0]; //학생들의 점수를 저장하는 배열
+
+  for (let i = 0; i < answers.length; i++) {
+    for (let j = 0; j < answerTable.length; j++) {
+      const answer = answerTable[j][i % answerTable[j].length];
+      if (answer === answers[i]) {
+        score[j]++;
+      }
+    }
+  }
+  //제일 많이 맞춘 사람 배열로 뽑아낼것.
+  //많이 맞춘 사람의 점수를 구해주자
+  const biggest = Math.max(...score);
+
+  const answer = [];
+  for (let i = 0; i < score.length; i++) {
+    if (score[i] === biggest) {
+      answer.push(i + 1);
+    }
+  }
+  return answer;
+}
+
+0.002;
