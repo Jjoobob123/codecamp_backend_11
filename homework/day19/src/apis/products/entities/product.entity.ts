@@ -27,6 +27,10 @@ export class Product {
   @Field(() => String)
   review: string;
 
+  // @Column({ default: false })
+  // @Field(() => Boolean)
+  // is_soldout: boolean;
+
   @Column({ type: 'decimal', precision: 2, scale: 1 })
   @Field(() => Float)
   star: number;

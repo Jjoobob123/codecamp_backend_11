@@ -45,7 +45,7 @@ export class ProductsService {
   }
 
   // checkSoldout({ product }: IProductsServiceCheckSoldout): void {
-  //   if (product.isSoldout)
+  //   if (product.is_Soldout)
   //     throw new UnprocessableEntityException('이미 판매 완료된 상품입니다');
   // }
 }
