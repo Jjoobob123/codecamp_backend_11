@@ -1,0 +1,153 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Coupon {
+  coupon_id: String!
+  name: String!
+  users: [User!]!
+}
+
+type ProductCategory {
+  id: String!
+  name: String!
+  products: [Product!]!
+}
+
+type ProductRoomImage {
+  room_image_id: String!
+  name: String!
+  room_image_url: String!
+  is_main: Boolean!
+  productsRoomType: [ProductRoomType!]!
+}
+
+type ProductRoomType {
+  id: String!
+  name: String!
+  price: Int!
+  headcount: Int!
+  products: [Product!]!
+  productsRoomImage: [ProductRoomImage!]!
+}
+
+type MainLocation {
+  id: String!
+  name: String!
+  subLocation: [SubLocation!]!
+}
+
+type SubLocation {
+  id: String!
+  name: String!
+  products: [Product!]!
+  mainLocation: [MainLocation!]!
+}
+
+type Product {
+  id: String!
+  name: String!
+  review: String!
+  star: Float!
+  productCategory: [ProductCategory!]!
+  subLocation: [SubLocation!]!
+  productsRoomType: [ProductRoomType!]!
+  payment: [Payment!]!
+}
+
+type Payment {
+  order_id: String!
+  stay_date: DateTime!
+  payment_amount: Int!
+  payment_method: String!
+  is_canceled: Boolean!
+  refund_amount: Int!
+  users: [User!]!
+  products: [Product!]!
+  productsRoomType: [ProductRoomType!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: String!
+  name: String!
+  create_date: DateTime!
+  email: String!
+  phone_number: String!
+  payment: [Payment!]!
+  coupons: [Coupon!]!
+}
+
+type Query {
+  fetchUsers: [User!]!
+  fetchUser(userId: String!): User!
+  fetchLoginUser: String!
+  fetchUserWithDeleted: [User!]!
+  fetchProducts: [Product!]!
+  fetchProduct(productId: String!): Product!
+  fetchProductsWithDeleted: [Product!]!
+  fetchRoomTypes: [ProductRoomType!]!
+  fetchRoomType(productRoomTypeId: String!): ProductRoomType!
+}
+
+type Mutation {
+  login(email: String!, password: String!): String!
+  restoreAccessToken: String!
+  createUser(name: String!, password: String!, create_date: DateTime!, phone_number: String!, email: String!): User!
+  updateUser(userId: String!, updateUserInput: UpdateUserInput!): User!
+  updateUserPwd(password: String!): User!
+  deleteUser(userId: String!): Boolean!
+  deleteLoginUser: Boolean!
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
+  deleteProduct(productId: String!): Boolean!
+  restoreProduct(productId: String!): Boolean!
+  createSubLocation(createSubLocationInput: CreateSubLocationInput!): SubLocation!
+  createProductRoomType(createProductRoomTypeInput: CreateProductRoomTypeInput!): ProductRoomType!
+  updateProductRoomType(productRoomTypeId: String!, updateProductRoomTypeInput: UpdateProductRoomTypeInput!): ProductRoomType!
+  createProductCategory(name: String!): ProductCategory!
+}
+
+input UpdateUserInput {
+  userId: String
+  name: String
+  create_date: DateTime
+  phone_number: String
+}
+
+input CreateProductInput {
+  name: String!
+  review: String!
+  star: Float!
+  productCategoryId: String!
+}
+
+input UpdateProductInput {
+  name: String
+  review: String
+  star: Float
+  productCategoryId: String
+}
+
+input CreateSubLocationInput {
+  name: String!
+  mainLocationId: String!
+}
+
+input CreateProductRoomTypeInput {
+  name: String!
+  price: Int!
+  headcount: Int!
+  productId: String!
+}
+
+input UpdateProductRoomTypeInput {
+  name: String
+  price: Int
+  headcount: Int
+  productId: String
+}
