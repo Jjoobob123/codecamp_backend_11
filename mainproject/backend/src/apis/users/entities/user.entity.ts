@@ -1,4 +1,4 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Coupon } from 'src/apis/coupons/entities/coupons.entity';
 import { Payment } from 'src/apis/payments/entities/payments.entity';
 
@@ -27,9 +27,9 @@ export class User {
   // @Field(() => String)
   password: string;
 
-  @Column()
-  @Field(() => Date)
-  create_date: Date;
+  // @Column()
+  // @Field(() => Date)
+  // create_date: Date;
 
   @Column()
   @Field(() => String)
@@ -52,4 +52,8 @@ export class User {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @Column({ default: 0 })
+  @Field(() => Int)
+  point: number;
 }

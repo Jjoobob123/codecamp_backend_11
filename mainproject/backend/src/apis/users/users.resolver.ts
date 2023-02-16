@@ -47,14 +47,14 @@ export class UsersResolver {
   createUser(
     @Args('name') name: string,
     @Args('password') password: string,
-    @Args('create_date') create_date: Date,
+    // @Args('create_date') create_date: Date,
     @Args('phone_number') phone_number: string,
     @Args('email') email: string,
   ): Promise<User> {
     return this.usersService.create({
       name,
       password,
-      create_date,
+      // create_date,
       phone_number,
       email,
     });

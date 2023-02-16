@@ -6,16 +6,22 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './apis/auth/auth.module';
 import { JwtAccessStrategy } from './apis/auth/strategies/jwt-access.strategy';
 import { JwtRefreshStrategy } from './apis/auth/strategies/jwt-refresh.strategy';
+import { JwtGoogleStrategy } from './apis/auth/strategies/jwt-social.google.strategy';
+import { JwtKakaoStrategy } from './apis/auth/strategies/jwt-social.kakao.strategy';
+import { JwtNaverStrategy } from './apis/auth/strategies/jwt-social.naver.strategy';
 import { MainLocationsModule } from './apis/mainLocations/mainLocations.module';
+import { PaymentsModule } from './apis/payments/payments.module';
 // import { BoardsModule } from './apis/boards/boards.module';
 import { ProductsModule } from './apis/products/products.module';
 import { ProductsCategoriesModule } from './apis/productsCategories/productsCategories.module';
 import { ProductRoomTypesModule } from './apis/productsRoomTypes/productRoomTypes.module';
+
 import { SubLocationsModule } from './apis/subLocations/subLocatoms.module';
 import { UsersModule } from './apis/users/users.module';
 
 @Module({
   imports: [
+    PaymentsModule,
     AuthModule,
     // BoardsModule,
     ProductsModule,
@@ -45,6 +51,9 @@ import { UsersModule } from './apis/users/users.module';
   providers: [
     JwtRefreshStrategy, //
     JwtAccessStrategy,
+    JwtGoogleStrategy,
+    JwtNaverStrategy,
+    JwtKakaoStrategy,
   ],
 })
 export class AppModule {}

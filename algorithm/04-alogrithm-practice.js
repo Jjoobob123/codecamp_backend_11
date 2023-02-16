@@ -394,3 +394,167 @@ arr.indexOf(2)
 arr.lastIndexOf(2);
 
 arr.slice(arr.indexOf(2) , arr.lastIndexOf(2) + 1)
+
+// 26일차
+
+// 피보나치 수
+// 피보나치 수는 F(0) = 0, F(1) = 1일 때, 1 이상의 n에 대하여 F(n) = F(n-1) + F(n-2) 가 적용되는 수 입니다.
+
+// 예를들어
+
+// F(2) = F(0) + F(1) = 0 + 1 = 1
+// F(3) = F(1) + F(2) = 1 + 1 = 2
+// F(4) = F(2) + F(3) = 1 + 2 = 3
+// F(5) = F(3) + F(4) = 2 + 3 = 5
+// 와 같이 이어집니다.
+
+// 2 이상의 n이 입력되었을 때, n번째 피보나치 수를 1234567으로 나눈 나머지를 리턴하는 함수, solution을 완성해 주세요.
+
+.001 
+function solution(n) {
+
+    let answer = new Array(2).fill(1)
+    for(let i = 2; i < n; i++){
+      answer.push((answer[answer.length - 1]+answer[answer.length - 2]) % 1234567)
+          
+    }
+  return answer[answer.length-1]
+}
+
+.002
+function solution(n) {
+  let array = [1,1]
+    for(let i = 2; i < n; i++){
+      array.push((array[ i - 1 ] + array [ i - 2 ]) % 1234567) 
+      console.log(array)
+    }
+  return  array[array.length-1] 
+}
+
+// 예산
+
+// 문제 설명
+// S사에서는 각 부서에 필요한 물품을 지원해 주기 위해 부서별로 물품을 구매하는데 필요한 금액을 조사했습니다. 
+// 그러나, 전체 예산이 정해져 있기 때문에 모든 부서의 물품을 구매해 줄 수는 없습니다. 
+// 그래서 최대한 많은 부서의 물품을 구매해 줄 수 있도록 하려고 합니다.
+
+// 물품을 구매해 줄 때는 각 부서가 신청한 금액만큼을 모두 지원해 줘야 합니다. 
+// 예를 들어 1,000원을 신청한 부서에는 정확히 1,000원을 지원해야 하며, 1,000원보다 적은 금액을 지원해 줄 수는 없습니다.
+
+// 부서별로 신청한 금액이 들어있는 배열 d와 예산 budget이 매개변수로 주어질 때, 
+// 최대 몇 개의 부서에 물품을 지원할 수 있는지 return 하도록 solution 함수를 완성해주세요.
+
+// 제한사항
+// d는 부서별로 신청한 금액이 들어있는 배열이며, 길이(전체 부서의 개수)는 1 이상 100 이하입니다.
+// d의 각 원소는 부서별로 신청한 금액을 나타내며, 부서별 신청 금액은 1 이상 100,000 이하의 자연수입니다.
+// budget은 예산을 나타내며, 1 이상 10,000,000 이하의 자연수입니다.
+
+.001 //Filter
+function solution(d, budget) {
+  const answer = d.sort( (a, b) => a - b )
+                  .filter( money => {
+                      // 총 예산에서 지원금 차감
+                      budget -= money;
+                      
+                      if( budget >= 0 ) {
+                          return money;
+                      }
+                  })
+  return answer.length;
+}
+
+.002 //for
+function solution(d, budget) {
+  let answer = 0;
+  
+  // 모든 부서가 신청한 지원금에 따라 오름차순
+  d.sort( (a, b) => a - b );
+  
+  // 부서들이 신청한 금액의 총 합
+  let sum = 0;
+  for( let i = 0; i < d.length; i++ ) {
+      sum += d[i];
+      
+      if( sum <= budget ) {
+          answer++;
+      }
+  }
+  return answer;
+}
+
+const arr = ['a','b','c','d']
+
+arr[arr.length -1]
+
+at 은 뒤에서 참조만 해올수 있는 메서드이다.
+arr.at(-1) // 'd'
+
+
+
+.001
+function solution(board, moves) {
+  let answer = 0;
+  const bucket = [] // 뽑은 이형들이 담겨지는 배열
+  
+  // 1. 크레인이 이동하는 위치값을 구하는 반복문
+  for(let i = 0; i < moves.length; i++){
+      // 2. 크레인이 이동해서 뽑아올 수 있는 인형의 위치값을 구하는 반복문
+      for(let j = 0; j < board.length; j++){
+          const doll = board[j][moves[i] - 1]
+          
+          
+          // 3. 크레인이 이동하는 위치가 빈칸이 아니라면(인형이 있다면)
+          if(doll !== 0 ){
+              // 4. 뽑은 인형의 위치를 빈칸으로 만들어준다.
+              board[j][moves[i] - 1] = 0;
+              // 바구니에 인형을 넣으려고 할 때,
+              // 바구니의 맨 위에 있는 인형과 현재 넣으려는 인형이 같다면, 바구니 맨 위의 인형을 제거 
+              // if(doll === bucket[bucekt.length - 1]){
+               if(doll === bucket.at(-1)){
+                  bucket.pop()
+                  answer += 2
+                  break;
+              }
+              
+              // 5. 바구니에 뽑은 인형을 담아준다.
+              bucket.push(doll)
+              // 한 번 인형을 뽑았다면, 같은 위치에 대한 크레인의 동작을 종료
+              break;
+          }
+      }
+  }
+  return answer
+  console.log(answer)
+}
+
+.002
+function solution(board, moves) {
+  let answer = 0;
+  const bucket = []
+  
+  moves.forEach((moves) => {
+      // 반복문을 정지된것 처럼 보이게 해줄 변수
+      // false일 때만 forEach 내부 로직이 동작하도록
+      let pick = false;
+      board.forEach(( location ) => {
+          const doll = location[moves  - 1]
+          if(pick === false){
+              if(doll !== 0){
+                  location[moves - 1] = 0;
+                  
+                  if( doll === bucket.at(-1)) {
+                      bucket.pop()
+                      answer += 2
+                  } else{
+                      bucket.push(doll)
+                  }
+              
+               
+              
+                  pick = true 
+              }   
+          }
+      })
+  })
+  return answer
+}

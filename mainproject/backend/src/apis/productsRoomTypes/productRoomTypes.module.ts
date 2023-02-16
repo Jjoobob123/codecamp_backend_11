@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductRoomType } from './entities/productsRoomTypes.entity';
-import { ProductRoomTypesRecolver } from './productRoomTypes.resolver';
+import { ProductRoomTypesResolver } from './productRoomTypes.resolver';
 import { ProductRoomTypesService } from './productRoomTypes.service';
 
 @Module({
@@ -10,6 +10,6 @@ import { ProductRoomTypesService } from './productRoomTypes.service';
       ProductRoomType, //
     ]),
   ],
-  providers: [ProductRoomTypesRecolver, ProductRoomTypesService],
+  providers: [ProductRoomTypesResolver, ProductRoomTypesService],
 })
 export class ProductRoomTypesModule {}

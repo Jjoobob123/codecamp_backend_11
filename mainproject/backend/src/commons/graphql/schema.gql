@@ -15,7 +15,7 @@ type ProductCategory {
 }
 
 type ProductRoomImage {
-  room_image_id: String!
+  id: String!
   name: String!
   room_image_url: String!
   is_main: Boolean!
@@ -56,30 +56,28 @@ type Product {
 }
 
 type Payment {
-  order_id: String!
-  stay_date: DateTime!
-  payment_amount: Int!
-  payment_method: String!
-  is_canceled: Boolean!
-  refund_amount: Int!
-  users: [User!]!
+  id: String!
+  impUid: String!
+  amount: Int!
+  status: POINT_TRANSACTION_STATUS_ENUM!
+  users: User!
   products: [Product!]!
   productsRoomType: [ProductRoomType!]!
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
+enum POINT_TRANSACTION_STATUS_ENUM {
+  PAYMENT
+  CANCEL
+}
 
 type User {
   id: String!
   name: String!
-  create_date: DateTime!
   email: String!
   phone_number: String!
   payment: [Payment!]!
   coupons: [Coupon!]!
+  point: Int!
 }
 
 type Query {
@@ -95,9 +93,11 @@ type Query {
 }
 
 type Mutation {
+  createPayment(impUid: String!, amount: Int!): Payment!
+  cancelPointPayment(impUid: String!): Payment!
   login(email: String!, password: String!): String!
   restoreAccessToken: String!
-  createUser(name: String!, password: String!, create_date: DateTime!, phone_number: String!, email: String!): User!
+  createUser(name: String!, password: String!, phone_number: String!, email: String!): User!
   updateUser(userId: String!, updateUserInput: UpdateUserInput!): User!
   updateUserPwd(password: String!): User!
   deleteUser(userId: String!): Boolean!
@@ -118,6 +118,11 @@ input UpdateUserInput {
   create_date: DateTime
   phone_number: String
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 input CreateProductInput {
   name: String!

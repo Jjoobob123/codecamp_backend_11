@@ -1,11 +1,11 @@
 import { UpdateUserInput } from '../dto/update-users.input';
 
 export interface IUsersServiceCreate {
-  name: string;
-  password: string;
-  create_date: Date;
-  phone_number: string;
-  email: string;
+  name?: string;
+  password?: string;
+  // create_date?: Date;
+  phone_number?: string;
+  email?: string;
 }
 
 export interface IUserServiceFindOneByEmail {
@@ -13,7 +13,8 @@ export interface IUserServiceFindOneByEmail {
 }
 
 export interface IUsersServiceFindOne {
-  userId: string;
+  userId?: string;
+  email?: string;
 }
 
 export interface IUsersServiceUpdate {

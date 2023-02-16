@@ -7,6 +7,8 @@ import { AuthService } from './auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtRefreshStrategy } from 'src/commons/auth/jwt-refresh.strategy';
 import { JwtAccessStrategy } from 'src/commons/auth/jwt-access.strategy';
+import { AuthController } from './auth.controller';
+import { JwtGoogleStrategy } from 'src/commons/auth/jwt-social-google.strategy';
 
 @Module({
   imports: [
@@ -18,9 +20,11 @@ import { JwtAccessStrategy } from 'src/commons/auth/jwt-access.strategy';
   providers: [
     JwtAccessStrategy, //
     JwtRefreshStrategy,
+    JwtGoogleStrategy,
     AuthResolver,
     AuthService,
     UsersService,
   ],
+  controllers: [AuthController],
 })
 export class AuthModule {}

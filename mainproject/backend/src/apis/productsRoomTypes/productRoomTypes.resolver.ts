@@ -5,7 +5,7 @@ import { ProductRoomType } from './entities/productsRoomTypes.entity';
 import { ProductRoomTypesService } from './productRoomTypes.service';
 
 @Resolver()
-export class ProductRoomTypesRecolver {
+export class ProductRoomTypesResolver {
   constructor(
     private readonly productRoomTypesService: ProductRoomTypesService,
   ) {}

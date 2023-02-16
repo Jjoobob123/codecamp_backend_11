@@ -54,7 +54,7 @@ export class UsersService {
   async create({
     name, //
     password,
-    create_date,
+    // create_date,
     phone_number,
     email,
   }: IUsersServiceCreate): Promise<User> {
@@ -68,7 +68,7 @@ export class UsersService {
     return this.userRepository.save({
       name, //
       password: hashedPassword,
-      create_date,
+      // create_date,
       phone_number,
       email,
     });

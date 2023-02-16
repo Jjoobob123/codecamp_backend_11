@@ -1,4 +1,4 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { Product } from 'src/apis/products/entities/product.entity';
 import { ProductRoomType } from 'src/apis/productsRoomTypes/entities/productsRoomTypes.entity';
 import { User } from 'src/apis/users/entities/user.entity';
@@ -12,36 +12,46 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+// status 결제완료 취소완료를 해주기 위해 만들어줌
+export enum POINT_TRANSACTION_STATUS_ENUM {
+  PAYMENT = 'PAYMENT',
+  CANCEL = 'CANCEL',
+}
+
+registerEnumType(POINT_TRANSACTION_STATUS_ENUM, {
+  name: 'POINT_TRANSACTION_STATUS_ENUM',
+});
+
 @Entity()
 @ObjectType()
 export class Payment {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => String)
-  order_id: string;
-
-  @Column()
-  @Field(() => Date)
-  stay_date: Date;
-
-  @Column()
-  @Field(() => Int)
-  payment_amount: number;
+  id: string;
 
   @Column()
   @Field(() => String)
-  payment_method: string;
+  impUid: string;
 
-  @Column({ default: false })
-  @Field(() => Boolean)
-  is_canceled: boolean;
+  // @Column()
+  // @Field(() => Date)
+  // stay: Date;
 
   @Column()
   @Field(() => Int)
-  refund_amount: number;
+  amount: number;
+
+  @Column({ type: 'enum', enum: POINT_TRANSACTION_STATUS_ENUM })
+  @Field(() => POINT_TRANSACTION_STATUS_ENUM)
+  status: POINT_TRANSACTION_STATUS_ENUM;
+
+  // @Column()
+  // @Field(() => String)
+  // method: string;
 
   @ManyToOne(() => User, (users) => users.payment)
-  @Field(() => [User])
-  users: User[];
+  @Field(() => User)
+  users: User;
 
   @ManyToOne(() => Product, (products) => products.payment)
   @Field(() => [Product])

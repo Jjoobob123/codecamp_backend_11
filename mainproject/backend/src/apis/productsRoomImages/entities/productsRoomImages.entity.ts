@@ -7,7 +7,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 export class ProductRoomImage {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => String)
-  room_image_id: string;
+  id: string;
 
   @Column()
   @Field(() => String)

@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtAccessStrategy } from '../auth/strategies/jwt-access.strategy';
+import { JwtGoogleStrategy } from '../auth/strategies/jwt-social.google.strategy';
+import { JwtNaverStrategy } from '../auth/strategies/jwt-social.naver.strategy';
 import { User } from './entities/user.entity';
 import { UsersResolver } from './users.resolver';
 import { UsersService } from './users.service';
@@ -13,6 +15,8 @@ import { UsersService } from './users.service';
     UsersResolver, //
     UsersService,
     JwtAccessStrategy,
+    JwtGoogleStrategy,
+    JwtNaverStrategy,
   ],
 
   exports: [
