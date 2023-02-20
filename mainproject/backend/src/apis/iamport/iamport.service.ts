@@ -17,6 +17,7 @@ export class IamportsService {
         imp_key: process.env.IMP_UID_KEY,
         imp_secret: process.env.IMP_UID_SECRET,
       });
+      console.log('🐧 🐧 🐧 🐧 🐧 🐧 🐧@ aaa: ', result);
       return result.data.response.access_token;
     } catch (error) {
       throw new HttpException(
@@ -30,6 +31,7 @@ export class IamportsService {
     let getPaymentData;
     try {
       const token = await this.getToken();
+      console.log('🐧 🐧 🐧 🐧 🐧 🐧 🐧 token : ', token);
       getPaymentData = await axios.get(
         `https://api.iamport.kr/payments/${impUid}`,
         { headers: { Authorization: token } },
@@ -51,12 +53,13 @@ export class IamportsService {
       const result = await axios.post(
         'https://api.iamport.kr/payments/cancel',
         {
-          imp_Uid: impUid,
+          imp_uid: impUid,
         },
         {
           headers: { Authorization: token },
         },
       );
+
       return result.data.response.cancel_amount;
     } catch (error) {
       throw new HttpException(

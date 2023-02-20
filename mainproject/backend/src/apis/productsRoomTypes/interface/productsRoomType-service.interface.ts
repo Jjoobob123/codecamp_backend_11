@@ -7,9 +7,9 @@ export interface IProductRoomTypeCreate {
 
 export interface IProductRoomTypeUpdate {
   updateProductRoomTypeInput: UpdateProductRoomTypeInput;
-  productRoomTypeId: string;
+  productsRoomTypeId: string;
 }
 
 export interface IProductRoomTypeFindOne {
-  productRoomTypeId: string;
+  productsRoomTypeId: string;
 }

@@ -29,7 +29,7 @@ export class ProductRoomType {
   headcount: number;
 
   @ManyToOne(() => Product, (products) => products.productsRoomType)
-  @Field(() => [Product])
+  @Field(() => Product)
   products: Product;
 
   @OneToMany(
@@ -37,5 +37,5 @@ export class ProductRoomType {
     (ProductsRoomImage) => ProductsRoomImage.productsRoomType,
   )
   @Field(() => [ProductRoomImage])
-  productsRoomImage: ProductRoomImage;
+  productsRoomImage: ProductRoomImage[];
 }

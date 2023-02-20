@@ -20,6 +20,7 @@ export class PaymentsResolver {
     @Context() context: IContext,
   ): Promise<Payment> {
     const user = context.req.user;
+    console.log('🐧 🐧 🐧 🐧 🐧 🐧 🐧', user);
     return this.paymentsService.createForPayment({ impUid, amount, user });
   }
 
@@ -30,6 +31,6 @@ export class PaymentsResolver {
     @Context() context: IContext,
   ) {
     const user = context.req.user;
-    this.paymentsService.cancel({ impUid, user });
+    return this.paymentsService.cancel({ impUid, user });
   }
 }

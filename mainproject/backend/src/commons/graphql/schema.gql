@@ -16,10 +16,9 @@ type ProductCategory {
 
 type ProductRoomImage {
   id: String!
-  name: String!
-  room_image_url: String!
-  is_main: Boolean!
-  productsRoomType: [ProductRoomType!]!
+  image_url: String!
+  status: Boolean!
+  productsRoomType: ProductRoomType!
 }
 
 type ProductRoomType {
@@ -27,7 +26,7 @@ type ProductRoomType {
   name: String!
   price: Int!
   headcount: Int!
-  products: [Product!]!
+  products: Product!
   productsRoomImage: [ProductRoomImage!]!
 }
 
@@ -85,11 +84,13 @@ type Query {
   fetchUser(userId: String!): User!
   fetchLoginUser: String!
   fetchUserWithDeleted: [User!]!
+  fetchRoomImages: [ProductRoomImage!]!
+  fetchRoomImage(ProductRoomImagesId: String!): ProductRoomImage!
   fetchProducts: [Product!]!
   fetchProduct(productId: String!): Product!
   fetchProductsWithDeleted: [Product!]!
   fetchRoomTypes: [ProductRoomType!]!
-  fetchRoomType(productRoomTypeId: String!): ProductRoomType!
+  fetchRoomType(productsRoomTypeId: String!): ProductRoomType!
 }
 
 type Mutation {
@@ -102,13 +103,16 @@ type Mutation {
   updateUserPwd(password: String!): User!
   deleteUser(userId: String!): Boolean!
   deleteLoginUser: Boolean!
+  uploadFile(files: [Upload!]!): [String!]!
+  createProductRoomImage(createProductRoomImageInput: CreateProductRoomImageInput!): ProductRoomImage!
+  updateProductRoomImage(productRoomImageId: String!, updateProductRoomImageInput: UpdateProductRoomImageInput!): ProductRoomImage!
   createProduct(createProductInput: CreateProductInput!): Product!
   updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
   deleteProduct(productId: String!): Boolean!
   restoreProduct(productId: String!): Boolean!
   createSubLocation(createSubLocationInput: CreateSubLocationInput!): SubLocation!
   createProductRoomType(createProductRoomTypeInput: CreateProductRoomTypeInput!): ProductRoomType!
-  updateProductRoomType(productRoomTypeId: String!, updateProductRoomTypeInput: UpdateProductRoomTypeInput!): ProductRoomType!
+  updateProductRoomType(productsRoomTypeId: String!, updateProductRoomTypeInput: UpdateProductRoomTypeInput!): ProductRoomType!
   createProductCategory(name: String!): ProductCategory!
 }
 
@@ -123,6 +127,19 @@ input UpdateUserInput {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateProductRoomImageInput {
+  image_url: String!
+  productRoomTypeId: String!
+}
+
+input UpdateProductRoomImageInput {
+  image_url: String
+  productRoomTypeId: String
+}
 
 input CreateProductInput {
   name: String!
@@ -148,6 +165,7 @@ input CreateProductRoomTypeInput {
   price: Int!
   headcount: Int!
   productId: String!
+  imagesUrl: [String!]!
 }
 
 input UpdateProductRoomTypeInput {
@@ -155,4 +173,5 @@ input UpdateProductRoomTypeInput {
   price: Int
   headcount: Int
   productId: String
+  imagesUrl: [String!]
 }

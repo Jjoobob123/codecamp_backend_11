@@ -42,7 +42,7 @@ export class AuthService {
   setRefreshToken({ user, res }: IAuthServiceSetRefreshToken): void {
     const refreshToken = this.jwtService.sign(
       { sub: user.id, email: user.email }, //
-      { secret: process.env.JWT_REFRESH_KEY, expiresIn: '2h' },
+      { secret: process.env.JWT_REFRESH_KEY, expiresIn: '2w' },
     );
 
     //개발환경
@@ -52,7 +52,7 @@ export class AuthService {
   getAccessToken({ user }: IAuthServiceGetAccessToken): string {
     return this.jwtService.sign(
       { sub: user.id }, //
-      { secret: process.env.JWT_ACCESS_KEY, expiresIn: '1h' },
+      { secret: process.env.JWT_ACCESS_KEY, expiresIn: '1w' },
     );
   }
 

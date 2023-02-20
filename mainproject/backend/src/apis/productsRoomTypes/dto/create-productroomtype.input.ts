@@ -14,4 +14,7 @@ export class CreateProductRoomTypeInput {
 
   @Field(() => String)
   productId: string;
+
+  @Field(() => [String])
+  imagesUrl: string[];
 }

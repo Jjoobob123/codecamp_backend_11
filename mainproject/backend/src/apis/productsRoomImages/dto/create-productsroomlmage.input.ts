@@ -3,13 +3,10 @@ import { Field, InputType } from '@nestjs/graphql';
 @InputType()
 export class CreateProductRoomImageInput {
   @Field(() => String)
-  name: string;
+  image_url: string;
 
-  @Field(() => String)
-  url: string;
-
-  @Field(() => Boolean)
-  status: boolean;
+  // @Field(() => Boolean)
+  // status: boolean;
 
   @Field(() => String)
   productRoomTypeId: string;

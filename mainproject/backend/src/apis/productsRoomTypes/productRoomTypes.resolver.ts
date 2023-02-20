@@ -17,9 +17,9 @@ export class ProductRoomTypesResolver {
 
   @Query(() => ProductRoomType)
   fetchRoomType(
-    @Args('productRoomTypeId') productRoomTypeId: string, //
+    @Args('productsRoomTypeId') productsRoomTypeId: string, //
   ): Promise<ProductRoomType> {
-    return this.productRoomTypesService.findOne({ productRoomTypeId });
+    return this.productRoomTypesService.findOne({ productsRoomTypeId });
   }
 
   @Mutation(() => ProductRoomType)
@@ -32,12 +32,12 @@ export class ProductRoomTypesResolver {
 
   @Mutation(() => ProductRoomType)
   updateProductRoomType(
-    @Args('productRoomTypeId') productRoomTypeId: string,
+    @Args('productsRoomTypeId') productsRoomTypeId: string,
     @Args('updateProductRoomTypeInput')
     updateProductRoomTypeInput: UpdateProductRoomTypeInput,
   ): Promise<ProductRoomType> {
     return this.productRoomTypesService.update({
-      productRoomTypeId,
+      productsRoomTypeId,
       updateProductRoomTypeInput,
     });
   }

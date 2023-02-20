@@ -11,20 +11,16 @@ export class ProductRoomImage {
 
   @Column()
   @Field(() => String)
-  name: string;
+  image_url: string;
 
-  @Column()
-  @Field(() => String)
-  room_image_url: string;
-
-  @Column()
+  @Column({ default: false })
   @Field(() => Boolean)
-  is_main: boolean;
+  status: boolean;
 
   @ManyToOne(
     () => ProductRoomType,
     (productsRoomType) => productsRoomType.productsRoomImage,
   )
-  @Field(() => [ProductRoomType])
-  productsRoomType: ProductRoomType[];
+  @Field(() => ProductRoomType)
+  productsRoomType: ProductRoomType;
 }

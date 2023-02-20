@@ -9,13 +9,15 @@ import { JwtRefreshStrategy } from './apis/auth/strategies/jwt-refresh.strategy'
 import { JwtGoogleStrategy } from './apis/auth/strategies/jwt-social.google.strategy';
 import { JwtKakaoStrategy } from './apis/auth/strategies/jwt-social.kakao.strategy';
 import { JwtNaverStrategy } from './apis/auth/strategies/jwt-social.naver.strategy';
+import { FilesModule } from './apis/files/files.module';
 import { MainLocationsModule } from './apis/mainLocations/mainLocations.module';
 import { PaymentsModule } from './apis/payments/payments.module';
 // import { BoardsModule } from './apis/boards/boards.module';
 import { ProductsModule } from './apis/products/products.module';
 import { ProductsCategoriesModule } from './apis/productsCategories/productsCategories.module';
-import { ProductRoomTypesModule } from './apis/productsRoomTypes/productRoomTypes.module';
+import { ProductRoomImagesModule } from './apis/productsRoomImages/productRoomimage.module';
 
+import { ProductRoomTypesModule } from './apis/productsRoomTypes/productRoomTypes.module';
 import { SubLocationsModule } from './apis/subLocations/subLocatoms.module';
 import { UsersModule } from './apis/users/users.module';
 
@@ -24,6 +26,8 @@ import { UsersModule } from './apis/users/users.module';
     PaymentsModule,
     AuthModule,
     // BoardsModule,
+    FilesModule,
+    ProductRoomImagesModule,
     ProductsModule,
     SubLocationsModule,
     MainLocationsModule,
