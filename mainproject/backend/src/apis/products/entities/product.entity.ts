@@ -45,17 +45,17 @@ export class Product {
 
   @ManyToOne(() => SubLocation, (subLocation) => subLocation.products)
   @Field(() => [SubLocation])
-  subLocation: SubLocation;
+  subLocation: SubLocation[];
 
   @OneToMany(
     () => ProductRoomType,
     (productsRoomType) => productsRoomType.products,
   )
-  @Field(() => [ProductRoomType])
+  @Field(() => ProductRoomType)
   productsRoomType: ProductRoomType;
 
   @OneToMany(() => Payment, (payment) => payment.products)
-  @Field(() => [Payment])
+  @Field(() => Payment)
   payment: Payment;
 
   @DeleteDateColumn()

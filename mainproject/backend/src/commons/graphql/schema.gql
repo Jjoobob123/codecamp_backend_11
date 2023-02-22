@@ -50,8 +50,8 @@ type Product {
   star: Float!
   productCategory: [ProductCategory!]!
   subLocation: [SubLocation!]!
-  productsRoomType: [ProductRoomType!]!
-  payment: [Payment!]!
+  productsRoomType: ProductRoomType!
+  payment: Payment!
 }
 
 type Payment {
@@ -98,6 +98,7 @@ type Mutation {
   cancelPointPayment(impUid: String!): Payment!
   login(email: String!, password: String!): String!
   restoreAccessToken: String!
+  logout: String!
   createUser(name: String!, password: String!, phone_number: String!, email: String!): User!
   updateUser(userId: String!, updateUserInput: UpdateUserInput!): User!
   updateUserPwd(password: String!): User!

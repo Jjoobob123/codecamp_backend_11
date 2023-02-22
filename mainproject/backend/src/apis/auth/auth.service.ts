@@ -46,7 +46,7 @@ export class AuthService {
     );
 
     //개발환경
-    res.setHeader('set-Cookie', `refreshToken = ${refreshToken} path=/`);
+    res.setHeader('set-Cookie', `refreshToken=${refreshToken}; path=/;`);
   }
 
   getAccessToken({ user }: IAuthServiceGetAccessToken): string {
