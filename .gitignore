@@ -4,7 +4,6 @@
 gcp-file-storage.json
 .env*
 
-
 # Logs
 logs
 *.log
