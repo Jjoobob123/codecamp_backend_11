@@ -1,0 +1,29 @@
+jojoohyun@MacBook-Pro backend % docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+c944f0eb6504 backend-my-backend "docker-entrypoint.s…" 32 seconds ago Up 15 seconds 0.0.0.0:3000->3000/tcp backend-my-backend-1
+ce2795a43fd2 redis:latest "docker-entrypoint.s…" 32 seconds ago Up 16 seconds 0.0.0.0:6379->6379/tcp backend-my-redis-1
+13591f28e09c mysql:latest "docker-entrypoint.s…" 47 hours ago Up 16 seconds 0.0.0.0:3306->3306/tcp, 33060/tcp 13591f28e09c_backend-my-database-1
+jojoohyun@MacBook-Pro backend % docker exec -it ce2795a43fd2 /bin/bash
+root@ce2795a43fd2:/data# redis-cli
+127.0.0.1:6379> keys _
+(empty array)
+127.0.0.1:6379> set qqq apple
+OK
+127.0.0.1:6379> get qqq
+"apple"
+127.0.0.1:6379> ttl qqq
+(integer) -1
+127.0.0.1:6379> expore qqq 20
+(error) ERR unknown command 'expore', with args beginning with: 'qqq' '20'
+127.0.0.1:6379> expire qqq 20
+(integer) 1
+127.0.0.1:6379> ttl qqq
+(integer) 17
+127.0.0.1:6379> ttl qqq
+(integer) 14
+127.0.0.1:6379> ttl qqq
+(integer) 13
+127.0.0.1:6379> ttl qqq
+(integer) 10
+127.0.0.1:6379> keys _
+(empty array)

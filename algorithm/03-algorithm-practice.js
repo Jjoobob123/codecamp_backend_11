@@ -121,7 +121,7 @@
 // 14일차
 // 001.내적
 // 문제 설명
-// 길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다. 
+// 길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다.
 // a와 b의 내적을 return 하도록 solution 함수를 완성해주세요.
 
 // 이때, a와 b의 내적은 a[0]*b[0] + a[1]*b[1] + ... + a[n-1]*b[n-1] 입니다. (n은 a, b의 길이)
@@ -550,3 +550,45 @@ function solution(answers) {
 }
 
 0.002;
+
+function solution(num, total) {
+  let startNum = 0;
+  // 초반 [0~num]의 배열을 생ㅅ어
+  let twoPointer = new Array(num)
+    .fill(0)
+    .map((a, i) => i)
+    .reduce((a, b) => a + b, 0);
+  // 배열이 total과 같아질 때까지 반복
+  while (twoPointer !== total) {
+    // 현재 배열의 합이 total보다 작다면 +1
+    if (twoPointer < total) {
+      startNum++;
+      // 크다면 -1
+    } else {
+      startNum--;
+    }
+    // 변경된 startNum에 따른 배열의 합 계산
+    twoPointer = new Array(num)
+      .fill(0)
+      .map((a, i) => i + startNum)
+      .reduce((a, b) => a + b, 0);
+  }
+  return new Array(num).fill(0).map((a, i) => i + startNum);
+}
+
+function solution(num, total) {
+  let aaa = 0;
+  let twoPointer = new Array(num)
+    .fill(0)
+    .map((a, i) => i)
+    .reduce((a, b) => a + b, 0);
+
+  console.log(total, aaa, twoPointer);
+  while (twoPointer !== total) {
+    if (twoPointer < total) {
+      aaa++;
+    } else {
+      aaa--;
+    }
+  }
+}

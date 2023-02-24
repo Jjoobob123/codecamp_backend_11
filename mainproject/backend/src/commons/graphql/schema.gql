@@ -89,7 +89,7 @@ type Query {
   fetchProducts: [Product!]!
   fetchProduct(productId: String!): Product!
   fetchProductsWithDeleted: [Product!]!
-  fetchRoomTypes: [ProductRoomType!]!
+  fetchRoomTypes(productId: String!): [ProductRoomType!]!
   fetchRoomType(productsRoomTypeId: String!): ProductRoomType!
 }
 

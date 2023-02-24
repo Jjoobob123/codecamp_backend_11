@@ -22,7 +22,7 @@ export class JwtRefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
       },
 
       secretOrKey: process.env.JWT_REFRESH_KEY,
-      passReqToCallback: true,
+      passReqToCallback: true, // verify 함수로 값을 전달해준다.
     });
   }
 

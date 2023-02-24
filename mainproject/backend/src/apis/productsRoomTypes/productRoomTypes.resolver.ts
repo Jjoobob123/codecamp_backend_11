@@ -11,8 +11,10 @@ export class ProductRoomTypesResolver {
   ) {}
 
   @Query(() => [ProductRoomType])
-  fetchRoomTypes(): Promise<ProductRoomType[]> {
-    return this.productRoomTypesService.findAll();
+  fetchRoomTypes(
+    @Args('productId') productId: string,
+  ): Promise<ProductRoomType[]> {
+    return this.productRoomTypesService.findAll({ productId });
   }
 
   @Query(() => ProductRoomType)

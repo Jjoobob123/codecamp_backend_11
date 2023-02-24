@@ -18,7 +18,7 @@
 
 //     // 0. 토큰만을 받아 올 수 있게 잘라준다.
 //     const accessToken = req.headers['accessToken'].replace(
-//         'Bearer ',
+//         // 'Bearer ',
 //         '',
 //     )
 //     const refreshToken = await context.req.headers['cookie'].split(

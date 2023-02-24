@@ -21,9 +21,13 @@ export class ProductRoomTypesService {
     private readonly productRoomImagesService: ProductRoomImagesSerivce,
   ) {}
 
-  findAll(): Promise<ProductRoomType[]> {
+  async findAll({ productId }): Promise<ProductRoomType[]> {
+    const product = await this.productService.findOne({
+      productId,
+    });
     return this.productRoomTypeRepository.find({
-      relations: ['productsRoomImage', 'product'],
+      where: { products: product },
+      relations: ['productsRoomImage', 'products'],
     });
   }
 
@@ -32,7 +36,7 @@ export class ProductRoomTypesService {
   }: IProductRoomTypeFindOne): Promise<ProductRoomType> {
     return this.productRoomTypeRepository.findOne({
       where: { id: productsRoomTypeId },
-      relations: ['productsRoomImage', 'product'],
+      relations: ['productsRoomImage', 'products'],
     });
   }
 
