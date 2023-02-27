@@ -4,6 +4,7 @@ const getPrimitive = (arg1: string, arg2: number, arg3: boolean): [boolean, numb
 };
 
 const result1 = getPrimitive("철수", 123, true);
+getPrimitive(result1);
 
 //
 //

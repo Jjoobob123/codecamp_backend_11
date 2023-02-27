@@ -14,9 +14,9 @@ export class FilesService {
 
     // 1-1) 스토리지 셋팅하기
     const storage = new Storage({
-      projectId: 'codecamp-backend-377315',
-      keyFilename: 'gcp-file-storage.json',
-    }).bucket('codejoo-storage');
+      projectId: '',
+      keyFilename: '',
+    }).bucket('');
 
     // 1-2) 스토리지에 파일 올리기
     // 이걸 실핼하면 스토리지에 저장된다. 파일 읽어서 올린다.

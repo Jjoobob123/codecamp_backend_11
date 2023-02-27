@@ -9,6 +9,7 @@ export class FilesService {
     //1. 파일을 클라우드 스토리지에 저장하는 로직
 
     const waitedFiles = await Promise.all(files);
+    console.log('👻👻👻👻👻👻', waitedFiles);
 
     // 1-1) 스토리지 셋팅하기
     const bucket = process.env.IMAGE_STORAGE_BUCKET;
@@ -16,6 +17,7 @@ export class FilesService {
       projectId: process.env.IMAGE_STORAGE_ID,
       keyFilename: process.env.IMAGE_STORAGE_FILE,
     }).bucket(bucket);
+    console.log('👻👻👻👻👻👻🦊', storage);
 
     // 1-2) 스토리지에 파일 올리기
     // 이걸 실핼하면 스토리지에 저장된다. 파일 읽어서 올린다. for문 안에서 await 사용하지 않는다.
@@ -32,6 +34,7 @@ export class FilesService {
           }),
       ),
     );
+    console.log('🐤🐤🐤🐤🐤🐤🐤🐤🐤🐤');
 
     console.timeEnd('시간을 확인해보자');
     console.log('파일 전송이 완료되었습니다!!!');
