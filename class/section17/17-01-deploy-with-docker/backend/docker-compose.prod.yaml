@@ -5,6 +5,7 @@ version: '3.7'
 services:
   #컴퓨터 이름
   my-backend:
+    image: asia.gcr.io/rare-habitat-377315/my-backend:1.3
     build:
       context: .
       dockerfile: Dockerfile
