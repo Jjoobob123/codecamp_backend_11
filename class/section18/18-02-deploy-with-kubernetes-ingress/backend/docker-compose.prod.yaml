@@ -1,0 +1,28 @@
+version: '3.7'
+
+# 컴퓨터들
+# 띄어쓰기를 중요하게 해야한다. 왜냐하면 띄어쓰기로 부모 자식을 정해주기때문이다.
+services:
+  #컴퓨터 이름
+  my-backend:
+    image: asia.gcr.io/rare-habitat-377315/my-backend:1.6
+    platform : linux/x86_64
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    # volumes:
+    #   - ./src:/myfolder/src
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env.prod
+
+  # 컴퓨터 이름
+  # my-database:
+  #   # platform : linux/x86_64
+  #   image: mysql:latest
+  #   environment:
+  #     MYSQL_DATABASE: 'mydocker'
+  #     MYSQL_ROOT_PASSWORD: 'root'
+  #   ports:
+  #     - 3306:3306
